@@ -18,13 +18,14 @@ on:
       - 'main'
     paths:
       - 'workers/web/**'
+      - '.github/workflows/front-end.yml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 22.x]
+        node-version: [22.x]
         os: [ubuntu-latest]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
