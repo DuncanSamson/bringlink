@@ -33,6 +33,9 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: npm install
+      working-directory: workers/web
     # - run: npm ci
     # - run: npx audit-ci --moderate
     # - run: npm run lint
