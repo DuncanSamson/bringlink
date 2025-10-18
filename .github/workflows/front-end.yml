@@ -12,6 +12,7 @@ on:
       - 'hotfix/**'
     paths:
       - 'workers/web/**'
+      - '.github/workflows/front-end.yml'
   pull_request:
     branches:
       - 'main'
