@@ -35,7 +35,7 @@ function App() {
         </p>
       </div>
       <div className='card'>
-        <button
+        <Button
           onClick={() => {
             fetch('/api/')
               .then((res) => res.json() as Promise<{ name: string }>)
@@ -44,7 +44,7 @@ function App() {
           aria-label='get name'
         >
           Name from API is: {name}
-        </button>
+        </Button>
         <p>
           Edit <code>worker/index.ts</code> to change the name
         </p>
