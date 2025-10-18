@@ -1,0 +1,49 @@
+name: Back End (API) Build
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'patch/**'
+      - 'minor/**'
+      - 'major/**'
+      - 'feature/**'
+      - 'fix/**'
+      - 'hotfix/**'
+    paths:
+      - 'workers/api/**'
+      - '.github/workflows/back-end.yml'
+  pull_request:
+    branches:
+      - 'main'
+    paths:
+      - 'workers/api/**'
+      - '.github/workflows/back-end.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+        os: [ubuntu-latest]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: npm install
+      working-directory: workers/api
+    # - run: npm ci
+    # - run: npx audit-ci --moderate
+    # - run: npm run lint
+    - name: Build Web Project
+      run: npm run build --if-present
+      working-directory: workers/api
+    # - run: npm test
+    # - run: npm run coverage-ci
+    # - run: npm run codecov
