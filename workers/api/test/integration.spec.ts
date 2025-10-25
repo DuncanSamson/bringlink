@@ -7,7 +7,7 @@ import { describe, it, expect } from "vitest";
 // Import your worker so you can unit test it
 import app from "../src";
 
-describe("API Worker Unit Tests", () => {
+describe("API Worker Integration Tests", () => {
   it("should return 400 for empty body", async () => {
     const res = await app.request("/shorten", {
       method: "POST",
