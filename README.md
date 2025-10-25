@@ -12,7 +12,7 @@ This project is managed via [kanban board](https://github.com/users/DuncanSamson
 
 ## Development
 
-This project is made up for two workesr which are deployed to cloudflare workers and connect to a D1 Database.
+This project is made up for two workers which are deployed to cloudflare and connect to a D1 Database.
 
 - `web` is the front-end application and main website
 - `api` is the back-end REST api.
