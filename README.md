@@ -19,7 +19,7 @@ This project is made up for two workers which are deployed to cloudflare and con
 
 ### Coding Rules
 
-Please follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) and :
+Please follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) and:
 
 1. Link each commit message to the related github issue eg. `#8 Add vitest to frontent`
 2. Create feature branches using the format  `feature/#1-title-of-issue`
