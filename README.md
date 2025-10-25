@@ -28,3 +28,8 @@ Please follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/
 5. Ensure that your changes come with tests (when applicable)
 6. The test suite passes locally before making a PR.
 7. Use the prettier linting rules provided, to comply to the style guide
+
+### Design
+
+![flow](https://github.com/user-attachments/assets/84cab034-78b4-44b7-8eaf-3648d5af1811)
+
