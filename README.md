@@ -21,13 +21,13 @@ This project is made up for two workers which are deployed to cloudflare and con
 
 Please follow [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) and:
 
-1. Link each commit message to the related github issue eg. `#8 Add vitest to frontent`
-2. Create feature branches using the format  `feature/#1-title-of-issue`
-3. Create bugfix branches using the format  `fix/#1-title-of-issue`
-4. Link a pull request to the related github issue eg `feature/#1-change-made`
-5. Ensure that your changes come with tests (when applicable)
+1. Link each commit message to the related github issue eg. `#8 Add vitest to frontent`.
+2. Create feature branches using the format  `feature/#1-title-of-issue`.
+3. Create bugfix branches using the format  `fix/#1-title-of-issue`.
+4. Link a pull request to the related github issue eg `feature/#1-change-made`.
+5. Ensure that your changes come with tests (when applicable).
 6. The test suite passes locally before making a PR.
-7. Use the prettier linting rules provided, to comply to the style guide
+7. Use the prettier linting rules provided, and comply to the style guide.
 
 ### Design
 
