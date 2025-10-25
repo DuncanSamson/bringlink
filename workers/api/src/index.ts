@@ -36,8 +36,6 @@ app.post('/shorten', async (c) => {
     // storeShortenedUrl(code, normalizedUrl)
 
     return c.json({
-      originalUrl: normalizedUrl,
-      code,
       shortUrl,
     })
   } catch (error) {
