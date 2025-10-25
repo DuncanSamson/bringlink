@@ -6,7 +6,7 @@ A URL Shortener Web App. It takes a long url like `https://example.com/really/re
 [![Back End (API) CI/CD](https://github.com/DuncanSamson/bringlink/actions/workflows/back-end.yml/badge.svg?branch=main)](https://github.com/DuncanSamson/bringlink/actions/workflows/back-end.yml)
 
 ## Management
-This project is managed via [kanban board](https://github.com/users/DuncanSamson/projects/2).
+This project is managed via a [kanban board](https://github.com/users/DuncanSamson/projects/2) on github.
 
 <img width="1450" height="480" alt="Screenshot 2025-10-25 at 22 05 56" src="https://github.com/user-attachments/assets/9b3e888a-4a7f-4fc3-9ae9-42e8d8c984d5" />
 
