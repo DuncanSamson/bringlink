@@ -9,6 +9,12 @@ export interface ShortenResult {
   normalizedUrl: string
 }
 
+/**
+ * Generates a short URL code and builds the final short URL.
+ * @param longUrl - The original URL to shorten.
+ * @param options - Configuration including base URL and optional code length.
+ * @returns A promise that resolves with the generated code and related info.
+ */
 export async function createShortUrl(longUrl: string, options: ShortenOptions): Promise<ShortenResult> {
   const normalizedUrl = normalizeUrl(longUrl)
   const baseUrl = normalizeBaseUrl(options.baseUrl)
@@ -22,6 +28,12 @@ export async function createShortUrl(longUrl: string, options: ShortenOptions): 
   }
 }
 
+/**
+ * Verifies the URL is valid HTTP(S) and returns its canonical string form.
+ * @param candidate - The URL string provided by the caller.
+ * @returns The normalized URL string.
+ * @throws If the URL is invalid or uses an unsupported protocol.
+ */
 function normalizeUrl(candidate: string): string {
   try {
     const parsed = new URL(candidate)
@@ -34,6 +46,12 @@ function normalizeUrl(candidate: string): string {
   }
 }
 
+/**
+ * Ensures the base URL is non-empty and strips trailing slashes.
+ * @param baseUrl - The base URL from configuration.
+ * @returns The normalized base URL without trailing slashes.
+ * @throws If the base URL is missing.
+ */
 function normalizeBaseUrl(baseUrl: string): string {
   if (!baseUrl) {
     throw new Error('Missing base URL')
@@ -41,6 +59,12 @@ function normalizeBaseUrl(baseUrl: string): string {
   return baseUrl.replace(/\/+$/, '')
 }
 
+/**
+ * Produces a base62 code from a hashed seed, filling with random data if needed.
+ * @param seed - A string used to seed the hash.
+ * @param desiredLength - The desired length of the generated code.
+ * @returns A promise that resolves with the generated code.
+ */
 async function generateCode(seed: string, desiredLength: number): Promise<string> {
   const data = textEncoder.encode(seed)
   const digest = await cryptoObj.subtle.digest('SHA-256', data)
@@ -64,6 +88,11 @@ async function generateCode(seed: string, desiredLength: number): Promise<string
   return code
 }
 
+/**
+ * Creates a random base62 string using cryptographically secure random values.
+ * @param length - The length of the segment to generate.
+ * @returns The generated random string.
+ */
 function createRandomSegment(length: number): string {
   const bytes = new Uint8Array(length)
   cryptoObj.getRandomValues(bytes)
@@ -94,6 +123,12 @@ const cryptoObj = (() => {
   return candidate
 })()
 
+/**
+ * Validates the requested code length, defaulting when unspecified.
+ * @param length - The requested code length or undefined.
+ * @returns A valid positive integer code length.
+ * @throws If the provided length is not a positive integer.
+ */
 function validateCodeLength(length: number | undefined): number {
   if (length === undefined) {
     return 7
