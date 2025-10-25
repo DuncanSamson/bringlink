@@ -44,6 +44,6 @@ jobs:
     - name: Build Web Project
       run: npm run build --if-present
       working-directory: workers/api
-    # - run: npm test
+    - run: npm test
     # - run: npm run coverage-ci
     # - run: npm run codecov
