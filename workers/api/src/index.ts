@@ -29,7 +29,7 @@ app.post('/shorten', async (c: Context) => {
   const baseUrl = SHORT_BASE_URL || new URL(c.req.url).origin
 
   try {
-    const { code, shortUrl, normalizedUrl } = await createShortUrl(body.url, {
+    const { shortUrl } = await createShortUrl(body.url, {
       baseUrl,
       codeLength: body.codeLength,
     })
