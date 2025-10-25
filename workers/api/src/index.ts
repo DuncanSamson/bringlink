@@ -1,4 +1,5 @@
-import { Hono } from 'hono'
+import { Hono, Context } from 'hono'
+import { env } from 'hono/adapter'
 import { createShortUrl } from './urlShortener'
 
 type EnvBindings = {
@@ -7,11 +8,11 @@ type EnvBindings = {
 
 const app = new Hono<{ Bindings: EnvBindings }>()
 
-app.get('/', (c) => {
+app.get('/', (c: Context) => {
   return c.text('Hello Hono!')
 })
 
-app.post('/shorten', async (c) => {
+app.post('/shorten', async (c: Context) => {
   let body: { url?: string; codeLength?: number } | null = null
 
   try {
@@ -24,7 +25,8 @@ app.post('/shorten', async (c) => {
     return c.json({ error: 'Missing "url" in request body' }, 400)
   }
 
-  const baseUrl = c.env.SHORT_BASE_URL || new URL(c.req.url).origin
+  const { SHORT_BASE_URL } = env<{ SHORT_BASE_URL?: string }>(c) ?? {}
+  const baseUrl = SHORT_BASE_URL || new URL(c.req.url).origin
 
   try {
     const { code, shortUrl, normalizedUrl } = await createShortUrl(body.url, {
@@ -45,6 +47,6 @@ app.post('/shorten', async (c) => {
   }
 })
 
-app.all('*', (c) => c.text('Not Found', 404))
+app.all('*', (c: Context) => c.text('Not Found', 404))
 
 export default app
